@@ -1,0 +1,10 @@
+peewee
+pyTelegramBotAPI
+python-dotenv
+requests
+paramiko
+pexpect
+cryptography
+qrcode[pil]
+APScheduler
+psycopg2-binary
