@@ -1,23 +1,11 @@
 import datetime
 import os.path
 import re
-from urllib.parse import urlparse
 
 from config_data.config import BASE_DIR
 import peewee
 
-# Получаем URL базы данных из переменной окружения
-DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://postgres:postgres@localhost:5432/vpn_bot')
-url = urlparse(DATABASE_URL)
-
-# Создаем подключение к PostgreSQL
-db = peewee.PostgresqlDatabase(
-    url.path[1:],  # имя базы данных
-    user=url.username,
-    password=url.password,
-    host=url.hostname,
-    port=url.port or 5432
-)
+db = peewee.SqliteDatabase(os.path.join(BASE_DIR, "database/database.db"))
 
 
 class BaseModel(peewee.Model):
